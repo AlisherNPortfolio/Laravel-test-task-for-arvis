@@ -22,7 +22,7 @@ class BaseRepository implements RepositoryInterface
 
     public function find($id): ?Model
     {
-        return $this->model->with(['measure', 'product'])->find($id);
+        return $this->model->find($id);
     }
 
     public function update(array $attributes): bool
