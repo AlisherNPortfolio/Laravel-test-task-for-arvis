@@ -12,4 +12,21 @@ class MeasureService extends BaseService
     {
         $this->repository = $repository;
     }
+
+    public function pagination()
+    {
+        return $this->repository->paginate();
+    }
+
+    public function create(array $attributes)
+    {
+    }
+
+    public function update(array $attributes, $id)
+    {
+    }
+
+    public function delete($id)
+    {
+    }
 }

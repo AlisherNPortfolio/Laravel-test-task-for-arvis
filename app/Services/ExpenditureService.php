@@ -12,4 +12,20 @@ class ExpenditureService extends BaseService
     {
         $this->repository = $repository;
     }
+
+    public function pagination()
+    {
+    }
+
+    public function create(array $attributes)
+    {
+    }
+
+    public function update(array $attributes, $id)
+    {
+    }
+
+    public function delete($id)
+    {
+    }
 }
