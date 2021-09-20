@@ -24,6 +24,7 @@ class MeasureService extends BaseService
     {
         try {
             $measure = $this->repository->create($attributes);
+
             return $this->successResponse($measure, 201);
         } catch (PDOException $e) {
             return $this->errorResponse(
@@ -38,16 +39,15 @@ class MeasureService extends BaseService
     {
         try {
 
-            $measure = $this->repository->find($id);
-            if (!$measure) {
-                abort(ErrorMessages::NOT_FOUND, ErrorMessages::NOT_FOUND_MSG);
-            }
+            $measure = $this->getMeasure($id);
 
             $measure->name = $attributes['name'];
+
             $measure->save();
 
             return $this->successResponse($measure, 201);
         } catch (PDOException $e) {
+
             return $this->errorResponse(
                 ErrorMessages::CAN_NOT_CREATE,
                 ErrorMessages::CAN_NOT_CREATE_MSG,
@@ -56,7 +56,36 @@ class MeasureService extends BaseService
         }
     }
 
+    public function view($id)
+    {
+        return $this->getMeasure($id);
+    }
+
     public function delete($id)
     {
+        $measure = $this->getMeasure($id);
+
+        try {
+
+            $measure->delete();
+        } catch (PDOException $e) {
+
+            return $this->errorResponse(
+                ErrorMessages::CAN_NOT_DELETE_MSG,
+                ErrorMessages::CAN_NOT_DELETE,
+                $e->getMessage()
+            );
+        }
+    }
+
+    private function getMeasure($id)
+    {
+        $measure = $this->repository->find($id);
+
+        if (!$measure) {
+            abort(ErrorMessages::NOT_FOUND, ErrorMessages::NOT_FOUND_MSG);
+        }
+
+        return $measure;
     }
 }

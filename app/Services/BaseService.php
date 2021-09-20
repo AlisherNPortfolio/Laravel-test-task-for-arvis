@@ -29,4 +29,6 @@ abstract class BaseService
     abstract public function update(array $attributes, $id);
 
     abstract public function delete($id);
+
+    abstract public function view($id);
 }

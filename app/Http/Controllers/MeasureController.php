@@ -55,7 +55,7 @@ class MeasureController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->service->view($id);
     }
 
     /**
@@ -76,9 +76,11 @@ class MeasureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MeasureRequest $request, $id)
     {
-        //
+        $request->validated();
+
+        return $this->service->update($request->all(), $id);
     }
 
     /**
@@ -89,6 +91,6 @@ class MeasureController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->service->delete($id);
     }
 }
