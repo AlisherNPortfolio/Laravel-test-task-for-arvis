@@ -23,4 +23,10 @@ abstract class BaseService
     }
 
     abstract public function pagination();
+
+    abstract public function create(array $attributes);
+
+    abstract public function update(array $attributes, $id);
+
+    abstract public function delete($id);
 }
