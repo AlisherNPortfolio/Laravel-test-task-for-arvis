@@ -15,6 +15,7 @@ class ExpenditureService extends BaseService
 
     public function pagination()
     {
+        return $this->repository->paginate();
     }
 
     public function create(array $attributes)

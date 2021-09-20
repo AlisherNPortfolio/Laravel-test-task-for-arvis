@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ExpenditureController;
 use App\Http\Controllers\MeasureController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReferencesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('measure', MeasureController::class);
 Route::resource('product', ProductController::class);
+Route::resource('expenditure', ExpenditureController::class);
+
+Route::get('products', [ReferencesController::class, 'getProducts']);
+Route::get('measures', [ReferencesController::class, 'getMeasures']);

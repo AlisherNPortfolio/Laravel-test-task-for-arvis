@@ -12,4 +12,11 @@ class ExpenditureRepository extends BaseRepository implements ExpenditureReposit
     {
         parent::__construct($expenditure);
     }
+
+    public function paginate($perPage = 10)
+    {
+        return $this->model
+            ->with(['measure', 'product'])
+            ->paginate($perPage);
+    }
 }
