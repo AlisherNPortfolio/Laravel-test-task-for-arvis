@@ -21,4 +21,6 @@ abstract class BaseService
             'details' => $details
         ]);
     }
+
+    abstract public function pagination();
 }
