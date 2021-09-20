@@ -57,15 +57,7 @@ export default {
     name: 'expenditure-list',
     data() {
         return {
-            expenditures: [
-                {
-                    id: 1,
-                    product: 'Apple',
-                    measure: 'kg',
-                    quantity: 2,
-                    price: 20000
-                }
-            ],
+            expenditures: [],
             query: {
                 page: 1
             },
@@ -94,7 +86,7 @@ export default {
             }, error => this.$notify({type: 'error', text: error}));
         },
         edit(id) {
-            this.$router.push({name: 'product-update', params: {id: id}});
+            this.$router.push({name: 'expenditure-update', params: {id: id}});
         },
         remove(id) {
             this.$api.delete(`expenditure/${id}`)

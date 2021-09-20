@@ -6,20 +6,42 @@
             lazy-validation>
             <v-row>
                 <v-col cols="12" md="3">
-                    <v-text-field
+                    <!-- <v-text-field
                         v-model="form.measure_id"
                         :rules="idRule"
                         label="Measure"
                         required
-                        ></v-text-field>
+                        ></v-text-field> -->
+                        <v-autocomplete
+                            v-model="form.measure_id"
+                            :items="measures"
+                            :rules="idRule"
+                            dense
+                            filled
+                            label="Measure"
+                            required
+                            item-value="id"
+                            item-text="name"
+                        ></v-autocomplete>
                 </v-col>
                 <v-col cols="12" md="3">
-                    <v-text-field
+                    <!-- <v-text-field
                         v-model="form.product_id"
                         :rules="idRule"
                         label="Product"
                         required
-                        ></v-text-field>
+                        ></v-text-field> -->
+                        <v-autocomplete
+                            v-model="form.product_id"
+                            :items="products"
+                            :rules="idRule"
+                            dense
+                            filled
+                            label="Product"
+                            required
+                            item-value="id"
+                            item-text="name"
+                        ></v-autocomplete>
                 </v-col>
             </v-row>
             <v-row>
@@ -41,7 +63,7 @@
                 </v-col>
             </v-row>
             <v-row>
-                <v-col cols="12" md="3">
+                <v-col cols="12" md="6">
                     <v-row>
                         <v-col align="end">
                             <v-btn
@@ -77,17 +99,17 @@ export default {
                 price: null,
                 quantity: null
             },
+            products: [],
+            measures: [],
             nameRules: [
                 v => !!v || 'Measure name is required',
                 v => (v && v.length <= 15) || 'Measure name must be less than 15 characters',
             ],
             idRule: [
-                v => !!v || 'Field is required',
-                v => (v && typeof v !== 'number') || 'Field type should be integer'
+                v => !!v || 'Field is required'
             ],
             numberRule: [
                 v => !!v || 'Field is required',
-                v => (v && typeof v <= 0) || 'Field should be greater than 0'
             ],
             valid: true,
             isEdit: false,
@@ -97,6 +119,8 @@ export default {
     created() {
         this.isEditPage();
         this.getExpenditureById();
+        this.getMeasures();
+        this.getProducts();
     },
     methods: {
         isEditPage() {
@@ -112,6 +136,18 @@ export default {
                     this.form = response.data;
                 }, error => console.log(error))
             }
+        },
+        getProducts() {
+            this.$api.get('products')
+            .then(response => {
+                this.products = response.data;
+            }, error => console.log(error))
+        },
+        getMeasures() {
+            this.$api.get('measures')
+            .then(response => {
+                this.measures = response.data;
+            }, error => console.log(error))
         },
         send() {
             if (!this.isEdit) {
