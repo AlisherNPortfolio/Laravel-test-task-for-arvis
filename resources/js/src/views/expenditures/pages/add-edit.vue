@@ -6,12 +6,6 @@
             lazy-validation>
             <v-row>
                 <v-col cols="12" md="3">
-                    <!-- <v-text-field
-                        v-model="form.measure_id"
-                        :rules="idRule"
-                        label="Measure"
-                        required
-                        ></v-text-field> -->
                         <v-autocomplete
                             v-model="form.measure_id"
                             :items="measures"
@@ -25,12 +19,6 @@
                         ></v-autocomplete>
                 </v-col>
                 <v-col cols="12" md="3">
-                    <!-- <v-text-field
-                        v-model="form.product_id"
-                        :rules="idRule"
-                        label="Product"
-                        required
-                        ></v-text-field> -->
                         <v-autocomplete
                             v-model="form.product_id"
                             :items="products"
