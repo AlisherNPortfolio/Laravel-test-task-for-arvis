@@ -19,6 +19,16 @@ const routes = [
                         path: '',
                         name: 'expenditure-index',
                         component: () => import('./../views/expenditures/pages')
+                    },
+                    {
+                        path: 'create',
+                        name: 'expenditure-create',
+                        component: () => import('./../views/expenditures/pages/add-edit')
+                    },
+                    {
+                        path: ':id',
+                        name: 'expenditure-update',
+                        component: () => import('./../views/expenditures/pages/add-edit')
                     }
                 ]
 			},
