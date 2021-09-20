@@ -36,6 +36,24 @@ class MeasureService extends BaseService
 
     public function update(array $attributes, $id)
     {
+        try {
+
+            $measure = $this->repository->find($id);
+            if (!$measure) {
+                abort(ErrorMessages::NOT_FOUND, ErrorMessages::NOT_FOUND_MSG);
+            }
+
+            $measure->name = $attributes['name'];
+            $measure->save();
+
+            return $this->successResponse($measure, 201);
+        } catch (PDOException $e) {
+            return $this->errorResponse(
+                ErrorMessages::CAN_NOT_CREATE,
+                ErrorMessages::CAN_NOT_CREATE_MSG,
+                $e->getMessage()
+            );
+        }
     }
 
     public function delete($id)
