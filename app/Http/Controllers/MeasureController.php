@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MeasureRequest;
 use App\Services\MeasureService;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class MeasureController extends Controller
      */
     public function index()
     {
+        return $this->service->pagination();
     }
 
     /**
@@ -38,9 +40,11 @@ class MeasureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MeasureRequest $request)
     {
-        //
+        $request->validated();
+
+        return $this->service->create($request->all());
     }
 
     /**
