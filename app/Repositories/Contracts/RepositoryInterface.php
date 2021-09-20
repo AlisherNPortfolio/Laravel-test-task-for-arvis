@@ -16,4 +16,6 @@ interface RepositoryInterface
     public function delete($id): ?bool;
 
     public function all(): Collection;
+
+    public function paginate($perPage);
 }

@@ -39,4 +39,9 @@ class BaseRepository implements RepositoryInterface
     {
         return $this->model->get();
     }
+
+    public function paginate($perPage = 10)
+    {
+        return $this->model->paginate($perPage);
+    }
 }
