@@ -3,10 +3,7 @@
         <v-main>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="collapse navbar-collapse">
-                    <div class="navbar-nav">
-                        <router-link to="/" class="nav-item nav-link">Home</router-link>
-                        <router-link to="/expenditures" class="nav-item nav-link">Expenditures</router-link>
-                    </div>
+                    <main-menu/>
                 </div>
             </nav>
             <router-view></router-view>
@@ -16,8 +13,10 @@
 </template>
 <script>
 import Notification from './../shared-components/Notification';
+import MainMenu from './MainMenu';
+
 export default {
     name: 'Home',
-    components: {Notification}
+    components: {Notification, MainMenu}
 }
 </script>
