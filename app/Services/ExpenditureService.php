@@ -25,6 +25,10 @@ class ExpenditureService extends BaseService
     {
     }
 
+    public function view($id)
+    {
+    }
+
     public function delete($id)
     {
     }
