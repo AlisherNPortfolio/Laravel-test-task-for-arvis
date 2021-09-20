@@ -12,4 +12,9 @@ class Measure extends Model
     protected $fillable = ['name'];
 
     public $timestamps = false;
+
+    public function expenditures()
+    {
+        return $this->hasMany(ExpenditureItem::class);
+    }
 }
