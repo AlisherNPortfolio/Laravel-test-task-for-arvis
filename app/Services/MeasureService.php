@@ -67,7 +67,7 @@ class MeasureService extends BaseService
 
         try {
 
-            $measure->delete();
+            return $measure->delete();
         } catch (PDOException $e) {
 
             return $this->errorResponse(
