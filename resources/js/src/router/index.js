@@ -18,7 +18,7 @@ const routes = [
                     {
                         path: '',
                         name: 'expenditure-index',
-                        component: () => import('./../views/expenditures/pages/expenditures')
+                        component: () => import('./../views/expenditures/pages')
                     }
                 ]
 			},
