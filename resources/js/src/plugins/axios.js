@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios';
 
-const URL_BASE = process.env.MIX_BASE_URL;
+const URL_BASE = '/api/';
 const instance = axios.create({
     baseURL: URL_BASE,
     headers: {
