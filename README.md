@@ -10,4 +10,4 @@
 
 ### Online
 
-Demo on [heroku](http://laravel-test-task-for-arvis.herokuapp.com)
+Demo on [heroku](https://laravel-test-task-for-arvis.herokuapp.com)
