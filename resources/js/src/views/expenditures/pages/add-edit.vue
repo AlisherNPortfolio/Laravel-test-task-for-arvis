@@ -121,7 +121,13 @@ export default {
             if (this.isEdit) {
                 this.$api.get(`expenditure/${this.id}`)
                 .then(response => {
-                    this.form = response.data;
+                    const data = response.data;
+                    this.form = {
+                            product_id: +data.product_id,
+                            measure_id: +data.measure_id,
+                            quantity: +data.quantity,
+                            price: +data.price
+                        };
                 }, error => console.log(error))
             }
         },
