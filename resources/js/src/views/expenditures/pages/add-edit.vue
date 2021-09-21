@@ -138,6 +138,9 @@ export default {
             }, error => console.log(error))
         },
         send() {
+            this.form.price = +this.form.price;
+            this.form.quantity = +this.form.quantity;
+
             if (!this.isEdit) {
                 this.add();
             } else {
@@ -157,7 +160,7 @@ export default {
             }, error => console.log(error))
         },
         update() {
-            this.$api.put(`expenditure/${this.id}`, this.form)
+            this.$api.put(`expenditure/${+this.id}`, this.form)
             .then(response => {
                 const res = response.data;
                 if (res.success) {

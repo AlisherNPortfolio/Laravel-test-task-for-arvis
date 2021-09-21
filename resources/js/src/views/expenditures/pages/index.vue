@@ -64,8 +64,8 @@ export default {
             headers: [
                 { text: 'ID', value: 'id' },
                 { text: 'Product', value: 'product.name' },
-                { text: 'Measure', value: 'measure.name' },
                 { text: 'Quantity', value: 'quantity' },
+                { text: 'Measure', value: 'measure.name' },
                 { text: 'Price', value: 'price' },
                 { text: 'Action', value: 'action', width: '5%'}
             ],

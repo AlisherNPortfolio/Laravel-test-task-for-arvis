@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ExpenditureRequest;
 use Illuminate\Http\Request;
 use App\Services\ExpenditureService;
 
@@ -39,9 +40,11 @@ class ExpenditureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ExpenditureRequest $request)
     {
-        //
+        $request->validated();
+
+        return $this->service->create($request->all());
     }
 
     /**
@@ -52,7 +55,7 @@ class ExpenditureController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->service->view($id);
     }
 
     /**
@@ -73,9 +76,11 @@ class ExpenditureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ExpenditureRequest $request, $id)
     {
-        //
+        $request->validated();
+
+        return $this->service->update($request->all(), $id);
     }
 
     /**
@@ -86,6 +91,6 @@ class ExpenditureController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->service->delete($id);
     }
 }

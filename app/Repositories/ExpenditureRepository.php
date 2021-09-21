@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Models\ExpenditureItem;
 use App\Repositories\Base\BaseRepository;
 use App\Repositories\Contracts\ExpenditureRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 
 class ExpenditureRepository extends BaseRepository implements ExpenditureRepositoryInterface
 {
@@ -18,5 +19,12 @@ class ExpenditureRepository extends BaseRepository implements ExpenditureReposit
         return $this->model
             ->with(['measure', 'product'])
             ->paginate($perPage);
+    }
+
+    public function find($id): ?Model
+    {
+        return $this->model
+            ->with(['measure', 'product'])
+            ->find($id);
     }
 }

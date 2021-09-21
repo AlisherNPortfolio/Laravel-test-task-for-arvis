@@ -9,7 +9,9 @@ class ExpenditureItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['measure_id', 'name', 'price'];
+    protected $fillable = ['measure_id', 'product_id', 'quantity', 'price'];
+
+    protected $hidden = ['updated_at'];
 
     public function measure()
     {
