@@ -15,8 +15,21 @@
                     </v-btn>
                 </router-link>
             </v-col>
-            <v-col cols="12" md="8">
-
+            <v-col cols="12" md="6"></v-col>
+            <v-col cols="12" md="2" align="end">
+                <v-autocomplete
+                    v-model="query.product_id"
+                    :items="products"
+                    dense
+                    filled
+                    label="Product"
+                    required
+                    item-value="id"
+                    item-text="name"
+                    :clearable="true"
+                    @click:clear="load"
+                    @change="load"
+                ></v-autocomplete>
             </v-col>
         </v-row>
         <v-row>
@@ -59,8 +72,10 @@ export default {
         return {
             expenditures: [],
             query: {
+                product_id: null,
                 page: 1
             },
+            searchInput: null,
             headers: [
                 { text: 'ID', value: 'id' },
                 { text: 'Product', value: 'product.name' },
@@ -69,15 +84,21 @@ export default {
                 { text: 'Price', value: 'price' },
                 { text: 'Action', value: 'action', width: '5%'}
             ],
+            products: [],
             total: 0
         }
     },
     components: {Pagination},
     created() {
         this.load();
+        this.getProducts();
     },
     methods: {
         load() {
+            if (this.query.product_id) {
+                this.query.page = 1;
+            }
+
             this.$api.get('expenditure', {params: this.query})
             .then(response => {
                 this.expenditures = response.data.data;
@@ -99,6 +120,12 @@ export default {
                 }
 
             }, error => this.$notify({type: 'error', text: error}));
+        },
+        getProducts() {
+            this.$api.get('products')
+            .then(response => {
+                this.products = response.data;
+            }, error => console.log(error))
         },
         pagination(page) {
             this.query.page = page;
