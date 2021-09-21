@@ -7,3 +7,7 @@
 3. `npm install`
 4. `php artisan migrate`
 5. `php artisan db:seed`
+
+### Online
+
+Demo on [heroku](http://laravel-test-task-for-arvis.herokuapp.com)
